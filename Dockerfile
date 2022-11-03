@@ -18,5 +18,10 @@ RUN apk --no-cache --update add libxml2-dev==2.9.14-r2 libxslt-dev==1.1.35-r0 li
     pip install --no-cache-dir pylint==2.15.5 && \
     rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
 
+# Create non root user
+RUN addgroup --system fll
+RUN adduser --system fll --ingroup fll
+USER fll
+
 # Launch test scripts
 CMD ["/bin/bash"]
