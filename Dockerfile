@@ -19,8 +19,8 @@ RUN apk --no-cache --update add libxml2-dev==2.9.14-r2 libxslt-dev==1.1.35-r0 li
     rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
 
 # Create non root user
-RUN addgroup --system fll && \
-    adduser --system fll --ingroup fll
+RUN addgroup --system fll --gid 1000 && \
+    adduser --system fll --ingroup fll --uid 1000
 
 USER fll
 
