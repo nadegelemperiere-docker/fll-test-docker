@@ -48,6 +48,15 @@ You can also get it from the docker hub
 
    docker image pull nadegelemperiere/fll-test-docker
 
+Then you can use it for example to a analyze python code quality with lint
+
+.. code:: bash
+
+   docker run  -it --rm \
+            --volume $scriptpath/../:/package:rw \
+            --workdir /package \
+            fll-test-docker:latest \
+            pylint --rcfile=/package/.pylintrc /package/module
 
 Issues
 ======
