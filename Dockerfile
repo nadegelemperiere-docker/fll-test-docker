@@ -4,7 +4,7 @@ FROM python:3.11.2-alpine3.17
 RUN apk --no-cache upgrade
 
 # Install git
-RUN apk --no-cache --update add git==2.38.3-r1 git-lfs==3.2.0-r3 less==608-r1 && \
+RUN apk --no-cache --update add git==2.38.4-r0 git-lfs==3.2.0-r4 less==608-r1 && \
     git lfs install && \
     rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
 
