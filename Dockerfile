@@ -17,6 +17,7 @@ RUN apk --no-cache --update add libxml2-dev==2.10.3-r1 libxslt-dev==1.1.37-r0 li
     python3 -m pip install --no-cache-dir --upgrade pip==23.0.1 && \
     pip install --no-cache-dir pylint==2.16.1 && \
     pip install --no-cache-dir pip-audit==2.4.14 && \
+    pip install --no-cache-dir setuptools==67.3.2 && \
     rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
 
 # Create non root user
