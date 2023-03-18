@@ -18,7 +18,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python
-RUN apt update && \
+RUN apt-get update && \
     apt-get install --no-install-recommends -y python3-pip=22.0.2+dfsg-1ubuntu0.2 && \
     rm -rf /var/lib/apt/lists/*
 
