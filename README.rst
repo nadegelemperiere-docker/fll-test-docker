@@ -24,7 +24,7 @@ This project releases a container containing the tools required to test FLL code
 Built With
 ----------
 
-.. image:: https://img.shields.io/static/v1?label=python&message=3.10.6&color=informational
+.. image:: https://img.shields.io/static/v1?label=python&message=3.11.0rc1&color=informational
    :target: https://www.python.org/
    :alt: Python
 

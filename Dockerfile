@@ -1,5 +1,11 @@
 FROM ubuntu:22.04
 
+# Update systemd
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y systemd=249.11-0ubuntu3.7 && \
+    mkdir systemd && \
+    cd systemd
+
 # Install glibc
 RUN apt-get update && \
     apt-get install --no-install-recommends -y glibc-source=2.35-0ubuntu3.1 && \
@@ -20,6 +26,7 @@ RUN apt-get update && \
 # Install python
 RUN apt-get update && \
     apt-get install --no-install-recommends -y python3-pip=22.0.2+dfsg-1ubuntu0.2 && \
+    apt-get install --no-install-recommends -y python3.11=3.11.0~rc1-1~22.04 && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python packages
@@ -34,9 +41,10 @@ RUN apt-get update && \
 # Create non root user
 RUN addgroup --system fll --gid 1000 && \
     adduser --system fll --ingroup fll --uid 1000 && \
-    echo 'alias python="python3"' >> ~/.bashrc
+    echo 'alias python3="python3.11"' >> ~/.bashrc && \
+    echo 'alias python="python3.11"' >> ~/.bashrc
 
-USER fll
+#USER fll
 
 # Launch test scripts
 CMD ["/bin/bash"]
