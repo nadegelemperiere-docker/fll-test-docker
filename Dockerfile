@@ -3,8 +3,7 @@ FROM ubuntu:22.04
 # Update systemd
 RUN apt-get update && \
     apt-get install --no-install-recommends -y systemd=249.11-0ubuntu3.7 && \
-    mkdir systemd && \
-    cd systemd
+    rm -rf /var/lib/apt/lists/*
 
 # Install glibc
 RUN apt-get update && \
@@ -44,7 +43,7 @@ RUN addgroup --system fll --gid 1000 && \
     echo 'alias python3="python3.11"' >> ~/.bashrc && \
     echo 'alias python="python3.11"' >> ~/.bashrc
 
-#USER fll
+USER fll
 
 # Launch test scripts
 CMD ["/bin/bash"]
