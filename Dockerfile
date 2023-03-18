@@ -26,6 +26,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install --no-install-recommends -y python3-pip=22.0.2+dfsg-1ubuntu0.2 && \
     apt-get install --no-install-recommends -y python3.11=3.11.0~rc1-1~22.04 && \
+    apt-get remove python3.10 && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python packages

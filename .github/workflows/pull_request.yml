@@ -45,7 +45,7 @@ jobs:
             - name: Build container
               run: docker image build -t nadegelemperiere/${{ github.event.repository.name }}:${{ github.sha }} .
 
-            - name: Check container
+            - name: Run Aquasecurity to check for vulnerabilities
               uses: aquasecurity/trivy-action@master
               with:
                 image-ref: 'nadegelemperiere/${{ github.event.repository.name }}:${{ github.sha }}'
