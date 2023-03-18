@@ -28,7 +28,8 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get autoremove -y python3.10 && \
     apt-get install --no-install-recommends -y python3.11=3.11.0~rc1-1~22.04 && \
-    curl -sS https://bootstrap.pypa.io/pip/get-pip.py | python3.11 && \
+    curl -sSL https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py && \
+    python3.11 get-pip.py && \
     ln -s /usr/bin/python3.11 /usr/bin/python3 && \
     ln -s /usr/bin/python3.11 /usr/bin/python && \
     rm -rf /var/lib/apt/lists/*
@@ -40,6 +41,12 @@ RUN apt-get update && \
     pip install --no-cache-dir pylint==2.17.0 && \
     pip install --no-cache-dir pip-audit==2.4.14 && \
     pip install --no-cache-dir setuptools==67.6.0 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Remove unnecessary packages
+RUN apt-get update && \
+    apt-get autoremove -y curl ca-certificates && \
+    rm get-pip.py && \
     rm -rf /var/lib/apt/lists/*
 
 # Create non root user
