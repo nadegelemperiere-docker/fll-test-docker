@@ -24,14 +24,14 @@ This project releases a container containing the tools required to test FLL code
 Built With
 ----------
 
-.. image:: https://img.shields.io/static/v1?label=python&message=3.11.2&color=informational
+.. image:: https://img.shields.io/static/v1?label=python&message=3.10.6&color=informational
    :target: https://www.python.org/
    :alt: Python
 
 Packaged with
 -------------
 
-.. image:: https://img.shields.io/static/v1?label=Docker&message=20.10.16&color=informational
+.. image:: https://img.shields.io/static/v1?label=Docker&message=20.10.23&color=informational
    :target: https://www.docker.com/
    :alt: Docker
 
@@ -93,4 +93,4 @@ Nadege Lemperiere - nadege.lemperiere@gmail.com
 Acknowledgments
 ===============
 
-N.A.
+[![Powered by the Spatial Math Toolbox](https://github.com/petercorke/spatialmath-python/raw/master/.github/svg/sm_powered.min.svg)](https://github.com/petercorke/spatialmath-python)

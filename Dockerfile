@@ -1,28 +1,41 @@
-FROM python:3.11.2-alpine3.17
+FROM ubuntu:22.04
 
-# Upgrade to fix vulnerabilities
-RUN apk --no-cache upgrade
+# Install glibc
+RUN apt update && \
+    apt-get install -y glibc-source=2.35-0ubuntu3.1 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install git
-RUN apk --no-cache --update add git==2.38.4-r0 git-lfs==3.2.0-r4 less==608-r1 && \
-    git lfs install && \
-    rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
+RUN apt update && \
+    apt-get install -y git=1:2.34.1-1ubuntu1.8 && \
+    apt-get install -y less=590-1ubuntu0.22.04.1 && \
+    apt-get install -y git-lfs=3.0.2-1ubuntu0.1 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install bash
-RUN apk add --no-cache --upgrade bash==5.2.15-r0 && \
-    rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
+RUN apt update && \
+    apt-get install -y bash=5.1-6ubuntu1 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install python
+RUN apt update && \
+    apt-get install -y python3-pip=22.0.2+dfsg-1ubuntu0.2 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install python packages
-RUN apk --no-cache --update add libxml2-dev==2.10.3-r1 libxslt-dev==1.1.37-r0 libffi-dev==3.4.4-r0 build-base==0.5-r3 && \
+RUN apt update && \
+    apt-get install -y libxml2-dev=2.9.13+dfsg-1ubuntu0.2 libxslt1-dev=1.1.34-4ubuntu0.22.04.1 libffi-dev=3.4.2-4 && \
     python3 -m pip install --no-cache-dir --upgrade pip==23.0.1 && \
-    pip install --no-cache-dir pylint==2.16.1 && \
+    pip install --no-cache-dir pylint==2.17.0 && \
     pip install --no-cache-dir pip-audit==2.4.14 && \
-    pip install --no-cache-dir setuptools==67.3.2 && \
-    rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apk/*
+    pip install --no-cache-dir setuptools==67.6.0 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create non root user
 RUN addgroup --system fll --gid 1000 && \
     adduser --system fll --ingroup fll --uid 1000
+
+RUN echo 'alias python3="python3.11"' >> ~/.bashrc
 
 USER fll
 
