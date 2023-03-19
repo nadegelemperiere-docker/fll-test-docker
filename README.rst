@@ -24,7 +24,7 @@ This project releases a container containing the tools required to test FLL code
 Built With
 ----------
 
-.. image:: https://img.shields.io/static/v1?label=python&message=3.11.0rc1&color=informational
+.. image:: https://img.shields.io/static/v1?label=python&message=3.11.2rc1&color=informational
    :target: https://www.python.org/
    :alt: Python
 
@@ -57,6 +57,23 @@ Then you can use it for example to a analyze python code quality with lint
             --workdir /package \
             fll-test-docker:latest \
             pylint --rcfile=/package/.pylintrc /package/module
+
+
+The third parties installation uses aptitude from ubuntu in root mode. Therefore, to comply with PEP 668,
+python packages can only be installed in virtual environment using venv :
+
+.. code:: bash
+
+   python3 -m venv /home/fll/<myenv>
+   . /home/fll/<myenv>/bin/activate
+   pip install --quiet --no-warn-script-location requirements.txt
+   deactivate
+
+This rule can be overcome using the --break-system-packages option, though not recommanded
+
+.. code:: bash
+
+   pip install --quiet --break-system-packages --no-warn-script-location requirements.txt
 
 Issues
 ======
