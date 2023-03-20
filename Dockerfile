@@ -5,6 +5,12 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y systemd=252.5-2ubuntu2 && \
     rm -rf /var/lib/apt/lists/*
 
+# Install curl
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y curl=7.88.1-6ubuntu1 && \
+    apt-get install --no-install-recommends -y unzip=6.0-27ubuntu1 && \
+    rm -rf /var/lib/apt/lists/*
+
 # Install glibc
 RUN apt-get update && \
     apt-get install --no-install-recommends -y glibc-source=2.37-0ubuntu1 && \
