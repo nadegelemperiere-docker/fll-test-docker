@@ -33,6 +33,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y python3-pip=23.0.1+dfsg-1 && \
     apt-get install --no-install-recommends -y python3-venv=3.11.2-1 && \
     apt-get install --no-install-recommends -y python3-pytest-pylint=0.19.0-1 && \
+    apt-get install --no-install-recommends -y python3-sphinx=5.3.0-3 && \
     apt-get install --no-install-recommends -y libxml2-dev=2.9.14+dfsg-1.1build2 && \
     apt-get install --no-install-recommends -y libxslt1-dev=1.1.35-1 && \
     apt-get install --no-install-recommends -y libffi-dev=3.4.4-1 && \
