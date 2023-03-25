@@ -37,7 +37,11 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y libxml2-dev=2.9.14+dfsg-1.1build2 && \
     apt-get install --no-install-recommends -y libxslt1-dev=1.1.35-1 && \
     apt-get install --no-install-recommends -y libffi-dev=3.4.4-1 && \
+    curl -sSL https://install.python-poetry.org -o get_poetry.py && \
+    export POETRY_HOME=/usr/local && \
+    python3 get_poetry.py --version 1.4.0 && \
     python3 -m pip install --no-cache-dir --break-system-packages pip-audit==2.5.1 && \
+    python3 -m pip install --no-cache-dir --break-system-packages poetry-dynamic-versioning==0.21.4 && \
     rm -rf /var/lib/apt/lists/*
 
 # Create non root user
