@@ -2,7 +2,7 @@ FROM ubuntu:23.04
 
 # Update systemd
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y systemd=252.5-2ubuntu2 && \
+    apt-get install --no-install-recommends -y systemd=252.5-2ubuntu3 && \
     rm -rf /var/lib/apt/lists/*
 
 # Install curl
