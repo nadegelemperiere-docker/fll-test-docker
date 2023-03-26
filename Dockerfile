@@ -44,6 +44,9 @@ RUN apt-get update && \
     python3 -m pip install --no-cache-dir --break-system-packages poetry-dynamic-versioning==0.21.4 && \
     rm -rf /var/lib/apt/lists/*
 
+# Correcting localtime path
+RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/UTC /etc/localtime
+
 # Create non root user
 RUN userdel ubuntu && \
     groupadd  --gid 1000 fll  && \
